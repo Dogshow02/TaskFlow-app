@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23667eea'><path d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-2h2v2zm0-4h-2V7h2v6z'/></svg>">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-tasks"></i>
+                TaskFlow
+            </div>
+            <div class="header-actions">
+                <button id="themeToggle" class="theme-toggle" title="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="export-dropdown">
+                    <button id="exportBtn" class="btn">Exportar</button>
+                    <div id="exportMenu" class="export-menu">
+                        <div id="exportICS" class="export-menu-item">
+                            <i class="far fa-calendar"></i>
+                            Calendário (.ics)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <div id="totalTasks" class="stat-value">0</div>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-item">
+                <div id="completedTasks" class="stat-value">0</div>
+                <div class="stat-label">Concluídas</div>
+            </div>
+            <div class="stat-item">
+                <div id="pendingTasks" class="stat-value">0</div>
+                <div class="stat-label">Pendentes</div>
+            </div>
+        </div>
+
+        <div class="add-task-form">
+            <div class="form-group">
+                <input type="text" id="taskInput" placeholder="Adicione uma nova tarefa...">
+            </div>
+            <div class="form-group">
+                <select id="prioritySelect">
+                    <option value="baixa">Baixa</option>
+                    <option value="media" selected>Média</option>
+                    <option value="alta">Alta</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" id="categoryInput" placeholder="Categoria (opcional)">
+            </div>
+            <div class="form-group">
+                <input type="datetime-local" id="reminderInput" title="Lembrete (opcional)">
+            </div>
+            <div class="form-group">
+                <button id="addTaskBtn">Adicionar</button>
+            </div>
+        </div>
+
+        <div class="filters">
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="todas">Todas</button>
+                <button class="filter-btn" data-filter="pendentes">Pendentes</button>
+                <button class="filter-btn" data-filter="concluidas">Concluídas</button>
+                <button class="filter-btn" data-filter="alta">Alta Prioridade</button>
+            </div>
+            <div class="filter-group">
+                <select id="categoryFilter" class="category-filter">
+                    <option value="">Todas as categorias</option>
+                </select>
+                <button id="clearCompletedBtn" class="btn">Limpar Concluídas</button>
+            </div>
+        </div>
+
+        <div id="tasksContainer" class="tasks-container">
+            <!-- Tarefas serão inseridas aqui dinamicamente -->
+        </div>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Editar Tarefa</h3>
+                <button id="closeModalBtn" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-form">
+                    <div class="form-group">
+                        <input type="text" id="editTaskInput" placeholder="Tarefa">
+                    </div>
+                    <div class="form-group">
+                        <select id="editPrioritySelect">
+                            <option value="baixa">Baixa</option>
+                            <option value="media">Média</option>
+                            <option value="alta">Alta</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="editCategoryInput" placeholder="Categoria (opcional)">
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" id="editReminderInput" title="Lembrete (opcional)">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelEditBtn" class="btn btn-secondary">Cancelar</button>
+                <button id="saveEditBtn" class="btn">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>TaskFlow &copy; 2025 - Gerenciador de Tarefas com SQLite</p>
+        </div>
+    </footer>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
