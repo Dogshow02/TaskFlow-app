@@ -1,4 +1,4 @@
-# TaskFlow com SQLite
+ TaskFlow com SQLite
 
 TaskFlow é um gerenciador de tarefas completo com banco de dados SQLite, backend Flask e frontend responsivo. Esta versão aprimorada do TaskFlow oferece persistência de dados, múltiplos usuários, categorias personalizáveis e muito mais.
 
@@ -92,17 +92,6 @@ taskflow_database/
 └── database_schema.sql        # Esquema do banco de dados
 ```
 
-## API Endpoints
-
-### Usuários
-
-- `GET /api/users` - Listar todos os usuários
-- `POST /api/users` - Criar novo usuário
-- `GET /api/users/<id>` - Obter usuário específico
-- `PUT /api/users/<id>` - Atualizar usuário
-- `DELETE /api/users/<id>` - Excluir usuário
-- `POST /api/login` - Autenticar usuário
-
 ### Tarefas
 
 - `GET /api/tasks` - Listar tarefas (com filtros opcionais)
@@ -118,11 +107,6 @@ taskflow_database/
 - `POST /api/categories` - Criar nova categoria
 - `PUT /api/categories/<id>` - Atualizar categoria
 - `DELETE /api/categories/<id>` - Excluir categoria
-
-### Configurações
-
-- `GET /api/settings/<user_id>` - Obter configurações do usuário
-- `PUT /api/settings/<user_id>` - Atualizar configurações
 
 ### Estatísticas
 
@@ -146,13 +130,10 @@ Para desenvolver novas funcionalidades:
 3. Atualize o cliente da API em `src/static/js/api.js`
 4. Implemente a interface do usuário em `src/static/js/script.js`
 
-## Licença
-
-Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE para detalhes.
 
 ## Autor
 
-Desenvolvido por [Seu Nome]
+Desenvolvido por Douglas Teixeira de Freitas
 
 ---
 
